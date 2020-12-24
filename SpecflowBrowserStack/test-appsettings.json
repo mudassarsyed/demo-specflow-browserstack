@@ -1,0 +1,27 @@
+{
+	"seleniumBaseUrl": "hub.browserstack.com",
+	"browserstack_username": "BROWSERSTACK_USER",
+	"browserstack_access_key": "BROWERSTACK_ACCESS_KEY",
+	"browserstack_buildName": "demo-specflow-csharp",
+	"browserstack_baseSessionName": "Specflow+ Sample Test",
+	"browserstack_projectName": "Demo CSharp",
+	"chrome": {
+		"browser": "Chrome",
+		"browser_version": "latest",
+		"os": "OS X",
+		"os_version": "Catalina",
+		"browserstack.local": true
+	},
+	"firefox": {
+		"browser": "Firefox",
+		"browser_version": "latest-1",
+		"os": "Windows",
+		"os_version": "10"
+	},
+	"safari": {
+		"browser": "Safari",
+		"browser_version": "14",
+		"os": "OS X",
+		"os_version": "Big Sur"
+	}
+}

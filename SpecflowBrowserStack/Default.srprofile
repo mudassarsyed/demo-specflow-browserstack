@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestProfile xmlns="http://www.specflow.org/schemas/plus/TestProfile/1.5">
+  <Settings projectName="SpecflowBrowserStack" />
+  <Execution stopAfterFailures="0" testThreadCount="5" testSchedulingMode="Sequential" retryCount="0" apartmentState="MTA" />
+  <Environment testThreadIsolation="Process" />
+  <TestAssemblyPaths>
+    <TestAssemblyPath>SpecflowBrowserStack.dll</TestAssemblyPath>
+  </TestAssemblyPaths>
+
+  <Report>
+    <Template name="Report\ReportTemplate.cshtml" />
+  </Report>
+
+  <Targets>
+    <Target name="Browser_Safari">
+      <Filter>Browser_Safari</Filter>
+      <DeploymentTransformationSteps>
+        <EnvironmentVariable variable="Test_Browser" value="Safari" />
+      </DeploymentTransformationSteps>
+      <Environment testThreadIsolation="Process" />
+    </Target>
+    <Target name="Browser_Chrome">
+      <Filter>Browser_Chrome</Filter>
+      <DeploymentTransformationSteps>
+        <EnvironmentVariable variable="Test_Browser" value="Chrome" />
+      </DeploymentTransformationSteps>
+      <Environment testThreadIsolation="Process" />
+    </Target>
+    <Target name="Browser_Firefox">
+      <Filter>Browser_Firefox</Filter>
+      <DeploymentTransformationSteps>
+        <EnvironmentVariable variable="Test_Browser" value="Firefox" />
+      </DeploymentTransformationSteps>
+      <Environment testThreadIsolation="Process" />
+    </Target>
+  </Targets>
+
+  <TestThreads>
+    <TestThread id="0">
+      <TestAffinity>testpath:Target:Browser_Safari</TestAffinity>
+    </TestThread>
+    <TestThread id="1">
+      <TestAffinity>testpath:Target:Browser_Chrome</TestAffinity>
+    </TestThread>
+    <TestThread id="2">
+      <TestAffinity>testpath:Target:Browser_Firefox</TestAffinity>
+    </TestThread>
+  </TestThreads>
+</TestProfile>
