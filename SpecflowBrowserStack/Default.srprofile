@@ -7,29 +7,28 @@
     <TestAssemblyPath>SpecflowBrowserStack.dll</TestAssemblyPath>
   </TestAssemblyPaths>
 
-  <Report>
-    <Template name="Report\ReportTemplate.cshtml" />
-  </Report>
-
   <Targets>
-    <Target name="Browser_Safari">
-      <Filter>Browser_Safari</Filter>
+    <Target name="0">
       <DeploymentTransformationSteps>
-        <EnvironmentVariable variable="Test_Browser" value="Safari" />
+        <EnvironmentVariable variable="Test_Browser_Index" value="0" />
       </DeploymentTransformationSteps>
       <Environment testThreadIsolation="Process" />
     </Target>
-    <Target name="Browser_Chrome">
-      <Filter>Browser_Chrome</Filter>
+    <Target name="1">
       <DeploymentTransformationSteps>
-        <EnvironmentVariable variable="Test_Browser" value="Chrome" />
+        <EnvironmentVariable variable="Test_Browser_Index" value="1" />
       </DeploymentTransformationSteps>
       <Environment testThreadIsolation="Process" />
     </Target>
-    <Target name="Browser_Firefox">
-      <Filter>Browser_Firefox</Filter>
+    <Target name="2">
       <DeploymentTransformationSteps>
-        <EnvironmentVariable variable="Test_Browser" value="Firefox" />
+        <EnvironmentVariable variable="Test_Browser_Index" value="2" />
+      </DeploymentTransformationSteps>
+      <Environment testThreadIsolation="Process" />
+    </Target>
+    <Target name="3">
+      <DeploymentTransformationSteps>
+        <EnvironmentVariable variable="Test_Browser_Index" value="3" />
       </DeploymentTransformationSteps>
       <Environment testThreadIsolation="Process" />
     </Target>
@@ -37,13 +36,16 @@
 
   <TestThreads>
     <TestThread id="0">
-      <TestAffinity>testpath:Target:Browser_Safari</TestAffinity>
+      <TestAffinity>testpath:Target:0</TestAffinity>
     </TestThread>
     <TestThread id="1">
-      <TestAffinity>testpath:Target:Browser_Chrome</TestAffinity>
+      <TestAffinity>testpath:Target:1</TestAffinity>
     </TestThread>
     <TestThread id="2">
-      <TestAffinity>testpath:Target:Browser_Firefox</TestAffinity>
+      <TestAffinity>testpath:Target:2</TestAffinity>
+    </TestThread>
+    <TestThread id="3">
+      <TestAffinity>testpath:Target:3</TestAffinity>
     </TestThread>
   </TestThreads>
 </TestProfile>

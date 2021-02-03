@@ -35,7 +35,12 @@ namespace SpecflowBrowserStack.Drivers
 
 		private IWebDriver GetWebDriver()
 		{
-			string testBrowserId = Environment.GetEnvironmentVariable("Test_Browser");
+			string browserIndex = Environment.GetEnvironmentVariable("Test_Browser_Index");
+			if (browserIndex == null)
+			{
+				browserIndex = "0";
+			}
+			int testBrowserId = Convert.ToInt32(browserIndex);
 			if (_currentLocal == null)
 			{
 				_currentLocal = GetBrowserStackLocal();
@@ -45,7 +50,12 @@ namespace SpecflowBrowserStack.Drivers
 
 		private Local GetBrowserStackLocal()
 		{
-			string testBrowserId = Environment.GetEnvironmentVariable("Test_Browser");
+			string browserIndex = Environment.GetEnvironmentVariable("Test_Browser_Index");
+			if (browserIndex == null)
+			{
+				browserIndex = "0";
+			}
+			int testBrowserId = Convert.ToInt32(browserIndex);
 			return _browserSeleniumDriverFactory.GetLocal(testBrowserId);
 		}
 

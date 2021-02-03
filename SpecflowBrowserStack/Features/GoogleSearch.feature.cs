@@ -70,19 +70,13 @@ namespace SpecflowBrowserStack.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Goto Google", new string[] {
-                "Browser_Chrome",
-                "Browser_Safari",
-                "Browser_Firefox"}, SourceLine=5)]
+        [TechTalk.SpecRun.ScenarioAttribute("Goto Google", SourceLine=2)]
         public virtual void GotoGoogle()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Browser_Chrome",
-                    "Browser_Safari",
-                    "Browser_Firefox"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Goto Google", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+#line 3
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -102,10 +96,10 @@ namespace SpecflowBrowserStack.Features
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 4
   testRunner.Given("goto Google", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
+#line 5
   testRunner.Then("title should be \'Google\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

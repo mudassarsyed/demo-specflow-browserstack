@@ -9,7 +9,7 @@ namespace SpecflowBrowserStack.Drivers
 {
 	public class ConfigurationDriver
 	{
-		private const string SeleniumBaseUrlConfigFieldName = "seleniumBaseUrl";
+		private const string SeleniumBaseUrlConfigFieldName = "host";
 		private readonly Lazy<IConfiguration> _configurationLazy;
 
 		public ConfigurationDriver()
@@ -21,25 +21,19 @@ namespace SpecflowBrowserStack.Drivers
 
 		public string SeleniumBaseUrl => Configuration[SeleniumBaseUrlConfigFieldName];
 
-		public string ProjectName => Configuration["browserstack_projectName"];
+		public string BSUsername => Configuration["BROWSERSTACK_USERNAME"];
+		public string BSAccessKey => Configuration["BROWERSTACK_ACCESS_KEY"];
 
-		public string BuildName => Configuration["browserstack_buildName"];
+		public IEnumerable<IConfigurationSection> CommonCapabilities => Configuration.GetSection("commonCapabilities").GetChildren();
 
-		public string BaseSessionName => Configuration["browserstack_baseSessionName"];
-
-		public string BSUsername => Configuration["browserstack_username"];
-		public string BSAccessKey => Configuration["browserstack_access_key"];
-
-		public IEnumerable<IConfigurationSection> Chrome => Configuration.GetSection("chrome").GetChildren();
-		public IEnumerable<IConfigurationSection> Firefox => Configuration.GetSection("firefox").GetChildren();
-		public IEnumerable<IConfigurationSection> Safari => Configuration.GetSection("safari").GetChildren();
+		public IEnumerable<IConfigurationSection> Capabilities => Configuration.GetSection("capabilities").GetChildren();
 
 		private IConfiguration GetConfiguration()
 		{
 			var configurationBuilder = new ConfigurationBuilder();
 
 			string directoryName = Path.GetDirectoryName(typeof(ConfigurationDriver).Assembly.Location);
-			configurationBuilder.AddJsonFile(Path.Combine(directoryName, @"test-appsettings.json"));
+			configurationBuilder.AddJsonFile(Path.Combine(directoryName, @"browserstack_config.json"));
 
 			return configurationBuilder.Build();
 		}

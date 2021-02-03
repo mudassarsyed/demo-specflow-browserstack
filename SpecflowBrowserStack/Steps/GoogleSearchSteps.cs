@@ -1,4 +1,5 @@
 using TechTalk.SpecFlow;
+using FluentAssertions;
 using SpecflowBrowserStack.Drivers;
 
 namespace SpecflowBrowserStack.Steps
@@ -6,23 +7,24 @@ namespace SpecflowBrowserStack.Steps
 	[Binding]
 	public class GoogleSearchSteps
 	{
-		private readonly BrowserDriver _driver;
+		private readonly WebDriver _webDriver;
 
-		public GoogleSearchSteps(BrowserDriver driver)
+		public GoogleSearchSteps(WebDriver driver)
 		{
-			_driver = driver;
+			_webDriver = driver;
 		}
 
 		[Given(@"goto Google")]
 		public void GivenINavigatedToGoogle()
 		{
-			_driver.GoToGoogle();
+			_webDriver.Current.Navigate().GoToUrl("https://www.google.com/ncr");
 		}
 
 		[Then(@"title should be '(.*)'")]
 		public void ThenTheResultShouldBeOnTheScreen(string expectedTitle)
 		{
-			_driver.ValidateTitleShouldBe(expectedTitle);
+			string result = _webDriver.Wait.Until(d => d.Title);
+			result.Should().Be(expectedTitle);
 		}
 	}
 }
