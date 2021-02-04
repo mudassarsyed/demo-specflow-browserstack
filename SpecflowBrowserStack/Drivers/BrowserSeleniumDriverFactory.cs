@@ -73,18 +73,20 @@ namespace SpecflowBrowserStack.Drivers
 		public Local GetLocal(int browserIndex)
 		{
 
-			// foreach (var tuple in enumerator)
-			// {
-			// 	if (tuple.Key.ToString().Equals("browserstack.local") && tuple.Value.ToString().Equals("True") && !Process.GetProcessesByName("BrowserStackLocal").Any())
-			// 	{
-			// 		Local _local = new Local();
-			// 		List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>() {
-			// 			new KeyValuePair<string, string>("key", _configurationDriver.BSAccessKey)
-			// 		};
-			// 		_local.start(bsLocalArgs);
-			// 		return _local;
-			// 	}
-			// }
+			var specificCap = _configurationDriver.Capabilities.ToList<IConfigurationSection>()[browserIndex];
+			foreach (var tuple in specificCap.GetChildren().AsEnumerable())
+			{
+				if (tuple.Key.ToString() == "browserstack.local")
+				{
+					Local _local = new Local();
+					List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>() {
+						new KeyValuePair<string, string>("key", _configurationDriver.BSAccessKey)
+					};
+					_local.start(bsLocalArgs);
+					return _local;
+
+				}
+			}
 			return null;
 		}
 	}
