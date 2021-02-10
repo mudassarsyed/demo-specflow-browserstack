@@ -52,12 +52,12 @@ namespace SpecflowBrowserStack.Drivers
 			string username = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
 			if (username == null || username == "")
 			{
-				username = _configurationDriver.BSUsername;
+				username = _configurationDriver.Username;
 			}
 			string access_key = Environment.GetEnvironmentVariable("BROWSERSTACK_ACCESS_KEY");
 			if (access_key == null || access_key == "")
 			{
-				access_key = _configurationDriver.BSAccessKey;
+				access_key = _configurationDriver.AccessKey;
 			}
 			string remoteUrl = "https://";
 			if (username != null && access_key != null)
@@ -80,7 +80,7 @@ namespace SpecflowBrowserStack.Drivers
 				{
 					Local _local = new Local();
 					List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>() {
-						new KeyValuePair<string, string>("key", _configurationDriver.BSAccessKey)
+						new KeyValuePair<string, string>("key", _configurationDriver.AccessKey)
 					};
 					_local.start(bsLocalArgs);
 					return _local;

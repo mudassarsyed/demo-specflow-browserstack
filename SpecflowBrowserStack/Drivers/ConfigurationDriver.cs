@@ -21,8 +21,8 @@ namespace SpecflowBrowserStack.Drivers
 
 		public string SeleniumBaseUrl => Configuration[SeleniumBaseUrlConfigFieldName];
 
-		public string BSUsername => Configuration["BROWSERSTACK_USERNAME"];
-		public string BSAccessKey => Configuration["BROWERSTACK_ACCESS_KEY"];
+		public string Username => Configuration["username"];
+		public string AccessKey => Configuration["access_key"];
 
 		public IEnumerable<IConfigurationSection> CommonCapabilities => Configuration.GetSection("commonCapabilities").GetChildren();
 
